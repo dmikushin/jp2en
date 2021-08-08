@@ -13,7 +13,7 @@ The quality of translation is acceptable in practice: a translation of a technic
 ```
 python3 -m venv ./venv
 ./venv/bin/activate
-pip3 install transformers torch sentencepiece
+pip3 install wheel transformers torch sentencepiece python-socketio aiohttp
 ```
 
 ## Usage
