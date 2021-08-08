@@ -18,7 +18,17 @@ pip3 install wheel transformers torch sentencepiece python-socketio aiohttp
 
 ## Usage
 
+Start the server:
+
 ```
-python ./jp2en.py
+python ./jp2en_server
+```
+
+Execute the client:
+
+```
+python ./jp2en "ADC ファイルが作られると，TD の左側にある「Hierarchy Navigation」メニューの 「Project」タブの中に「io.adc」ファイルが表示されます.この ADC ファイルを開くと，端 子の設定がテキストで書かれていることがわかります.このファイルを直接書き換えることで
+も端子の設定を行うことができます."
+When a DCC file is created, the "O. Adc" file will be displayed in the "Healerch Navigation" tab on the left side of the TDTD. If you open this ADC file, you will find that the settings of the terminals are written in text. You can also set them by making this file read directly.
 ```
 
