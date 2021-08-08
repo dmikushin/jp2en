@@ -10,6 +10,15 @@ The quality of translation is acceptable in practice: a translation of a technic
 
 ## Prerequisites
 
+Clone the repository recursively with the Git LFS enabled:
+
+```
+git lfs install
+git clone --recurse-submodules https://github.com/dmikushin/jp2en.git
+```
+
+Prepare Python virtual environment:
+
 ```
 python3 -m venv ./venv
 ./venv/bin/activate
