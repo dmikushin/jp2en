@@ -1,0 +1,3 @@
+[submodule "ThirdParty/translation-japanese"]
+	path = ThirdParty/translation-japanese
+	url = https://huggingface.co/tommy19970714/translation-japanese
