@@ -1,6 +1,6 @@
 # Japanese to English NLP-based translation service
 
-Translate Japanese text to English text using the NLP model is published by [tommy19970714](https://huggingface.co/tommy19970714/translation-japanese).
+Translate Japanese text to English text offline from the command line, using the NLP model published by [tommy19970714](https://huggingface.co/tommy19970714/translation-japanese).
 
 | testset       | BLEU | chr-F |
 | ------------- | ---- | ----- |
