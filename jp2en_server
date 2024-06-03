@@ -12,13 +12,12 @@ tokenizer = AutoTokenizer.from_pretrained("./ThirdParty/translation-japanese")
 
 model = AutoModelForSeq2SeqLM.from_pretrained("./ThirdParty/translation-japanese")
 
-sio = socketio.AsyncServer(transports=['polling'])#async_mode='polling')#aiohttp')
+sio = socketio.AsyncServer(transports=['polling'])
 app = web.Application()
 sio.attach(app)
 
 class Namespace(socketio.AsyncNamespace):
-    async def on_connect(self, sid, environ, auth):
-        text = auth['text']
+    async def on_message(self, sid, text):
         translated = model.generate(**tokenizer(text, return_tensors="pt", padding=True))
         translation = ''
         for t in translated :

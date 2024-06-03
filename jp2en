@@ -19,6 +19,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     try:
-        sio.connect(f'http://localhost:{args.port}', auth={'text': args.text}, transports=['polling'], namespaces=['/'])
+        sio.connect(f'http://localhost:{args.port}', transports=['polling'], namespaces=['/'])
+        sio.emit('message', args.text, namespace='/')
     except socketio.exceptions.ConnectionError:
         pass
