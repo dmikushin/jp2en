@@ -6,7 +6,7 @@ import sys
 
 sio = socketio.Client()
 
-@sio.event
+@sio.event(namespace='/')
 def translation(text):
     print(text)
     sio.disconnect()
@@ -19,6 +19,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     try:
-        sio.connect(f'http://localhost:{args.port}', auth={'text': args.text}, transports=['polling'])
+        sio.connect(f'http://localhost:{args.port}', auth={'text': args.text}, transports=['polling'], namespaces=['/'])
     except socketio.exceptions.ConnectionError:
         pass

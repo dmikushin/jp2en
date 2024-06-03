@@ -16,14 +16,16 @@ sio = socketio.AsyncServer(transports=['polling'])#async_mode='polling')#aiohttp
 app = web.Application()
 sio.attach(app)
 
-@sio.event
-async def connect(sid, environ, auth):
-    text = auth['text']
-    translated = model.generate(**tokenizer(text, return_tensors="pt", padding=True))
-    translation = ''
-    for t in translated :
-        translation = translation + tokenizer.decode(t, skip_special_tokens=True)
-    await sio.emit('translation', translation, to=sid)
+class Namespace(socketio.AsyncNamespace):
+    async def on_connect(self, sid, environ, auth):
+        text = auth['text']
+        translated = model.generate(**tokenizer(text, return_tensors="pt", padding=True))
+        translation = ''
+        for t in translated :
+            translation = translation + tokenizer.decode(t, skip_special_tokens=True)
+        await sio.emit('translation', translation, to=sid)
+
+sio.register_namespace(Namespace('/'))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
